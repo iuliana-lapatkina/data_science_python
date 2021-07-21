@@ -2,3 +2,4 @@ phrase = input("введите несколько слов, разделенны
 
 for ind, el in enumerate((phrase.split()), 1):
     print(ind, el[:9])
+    
