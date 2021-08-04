@@ -1,0 +1,4 @@
+Ivanov - 16500
+Petrov - 22000
+Sidirov - 55500
+Smith - 62220
