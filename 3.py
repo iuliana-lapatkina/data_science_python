@@ -1,34 +1,19 @@
-class Cell:
-    def __init__(self, quantity):
-        self.quantity = int(quantity)
+class Numbers(Exception):
+    def __init__(self, txt):
+        self.txt = txt
 
-    def __add__(self, other):
-        return f'Объединение двух клеток: {self.quantity + other.quantity}'
+result_list = []
 
-    def __sub__(self, other):
-        sub = self.quantity - other.quantity
-        return f'Вычитание двух клеток: {sub}'
+while True:
+    value = input('Введите число или stop для выхода: ')
 
-    def __mul__(self, other):
-        mul = self.quantity * other.quantity
-        return f'Создается общая клетка из двух при умножении: {mul}'
+    if value == 'stop':
+        print(f'Список чисел: {result_list}')
+        break
 
-    def __truediv__(self, other):
-        truediv = self.quantity // other.quantity
-        return f'Создается общая клетка из двух при делении: {truediv}'
-
-    def make_order(self, row):
-        result = ''
-        for i in range(int(self.quantity / row)):
-            result += '*' * row + '\n'
-        result += '*' * (self.quantity % row) + '\n'
-        return result
-
-cell = Cell(4)
-cell2 = Cell(1)
-print(cell + cell2)
-print(cell - cell2)
-print(cell * cell2)
-print(cell / cell2)
-print(cell.make_order(7))
-print(cell2.make_order(7))
+    try:
+        if not value.isnumeric():
+            raise Numbers('NaN!')
+        result_list.append(int(value))
+    except Numbers as error:
+        print('Введите число')
